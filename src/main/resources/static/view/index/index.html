@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图书管理平台</title>
+
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="index.js"></script>
+</head>
+
+<body ng-app="indexApp" ng-controller="indexCtrl" ng-init="init()" style="overflow-y: hidden;" ng-cloak>
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">管理平台</a>
+        </div>
+        <p class="navbar-text navbar-right" ng-show="userName!==''"> <a href="#" class="navbar-link" ng-click="logout()">退出</a></p>
+        <p class="navbar-text navbar-right" ng-show="userName!==''">您好：<a href="#" class="navbar-link" ng-bind="userName"></a></p>
+      </div>
+    </nav>
+    <div>
+      <ul class="nav nav-pills nav-stacked" style="margin-top: 50px;width: 200px;float: left;">
+        <li role="presentation" ng-class="{true:'active',false:''}[menuIndex==$index]" ng-repeat="item in menulist"
+          ng-click="chooseMenu($index)">
+          <a href="" ng-bind="item.name" style="padding: 10px 60px"></a>
+        </li>
+      </ul>
+      <iframe frameborder="0" ng-init="changeFrameHeight()" id="iframepage" style="margin-top: 50px;"></iframe>
+    </div>
+  </div>
+</body>
+
+</html>

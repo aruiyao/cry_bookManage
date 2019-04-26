@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+  <link rel="stylesheet" href="/bookManage/css/login.css">
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="bookManage_detail.js"></script>
+  <style>
+    .second-label {
+      text-align: left !important;
+      font-weight: normal;
+    }
+  </style>
+</head>
+
+<body ng-app="bookManageDetailApp" ng-controller="bookManageDetailCtrl" ng-init="init()">
+  <div style="padding: 0 50px 100px 50px">
+    <h3>书籍详情</h3>
+    <div style="padding: 30px 0">
+
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for="bookName" class="col-sm-2 control-label">书名</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="book.name"></label>
+        </div>
+        <div class="form-group">
+          <label for="picture" class="col-sm-2 control-label">书籍主图</label>
+          <div class="col-sm-5">
+            <img ng-src="{{downUrl + '?imageName=' + book.picture}}" style="width: 160px; height:160px;border: 1px solid #cccccc"
+              ng-show="book.picture!='' && book.picture!=null">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="author" class="col-sm-2 control-label">作者</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="book.author"></label>
+
+        </div>
+        <div class="form-group">
+          <label for="press" class="col-sm-2 control-label">出版社</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="book.press"></label>
+
+        </div>
+        <div class="form-group">
+          <label for="releaseTime" class="col-sm-2 control-label">出版年</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="book.releaseTime"></label>
+
+        </div>
+        <div class="form-group">
+          <label for="page" class="col-sm-2 control-label">页数</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="book.page"></label>
+        </div>
+        <div class="form-group">
+          <label for="type" class="col-sm-2 control-label">类型</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="typeName"></label>
+        </div>
+        <div class="form-group">
+          <label for="price" class="col-sm-2 control-label">定价</label>
+          <label class="col-sm-5 control-label second-label">
+            ￥ <span ng-bind="book.price"></span>
+          </label>
+
+        </div>
+
+        <div class="form-group">
+          <label for="bookBrife" class="col-sm-2 control-label">书籍简介</label>
+          <label class="col-sm-5 control-label second-label" style="word-break: break-all" ng-bind="book.bookBrife">
+          </label>
+
+        </div>
+        <div class="form-group">
+          <label for="authBrife" class="col-sm-2 control-label">作者简介</label>
+          <label class="col-sm-5 control-label second-label" style="word-break: break-all" ng-bind="book.authBrife"></label>
+
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="goBack()">返回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

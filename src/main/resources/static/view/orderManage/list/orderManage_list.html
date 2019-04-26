@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <link rel="stylesheet" href="/manage/css/bootstrap.css">
+  <link rel="stylesheet" href="/manage/css/reset.css">
+  <link rel="stylesheet" href="/manage/css/bootstrapValidator.css">
+
+  <script src="/manage/3rd/jquery.js"></script>
+  <script src="/manage/3rd/bootstrap.js"></script>
+  <script src="/manage/3rd/bootstrapValidator.js"></script>
+  <script src="/manage/3rd/angular-1.4.6.js"></script>
+  <script src="orderManage_list.js"></script>
+
+  <style>
+    .form-group label{
+      padding-right: 10px
+    }  
+  </style>
+</head>
+
+<body ng-app="orderManageListApp" ng-controller="orderManageListCtrl" ng-init="init()">
+  <div style="padding: 0 50px">
+    <div style="padding:30px 0">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="orderId">订单编号</label>
+          <input type="text" class="form-control" placeholder="请输入订单编号" ng-model="orderId">
+        </div>
+        <button class="btn btn-primary" style="margin-left: 35px" ng-click="getOrderList()">搜索</button>
+      </form>
+    </div>
+    <div style="padding-top: 30px">
+      <table class="table table-hover" id="goodsTable">
+        <thead>
+          <th>订单编号</th>
+          <th>用户编号</th>
+          <th>用户学号</th>
+          <th>商品名称</th>
+          <th>订单价格</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in orderList">
+            <td ng-bind="item.id"></td>
+            <td><span ng-bind="item.userId"></span></td>
+            <td><span ng-bind="item.userName"></span></td>
+            <td ng-bind="item.goodsName" style="width: 250px;max-width: 250px;" title="{{item.goodsName}}"></td>
+            <td>￥<span ng-bind="item.totalPrice"></span></td>
+            <td><span ng-bind="item.createTime|newdate"></span></td>
+            <td>
+              <ul>
+                <li><a href="" ng-click="detail(item.id)">查看</a></li>
+                <div style="clear: both;"></div>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="getOrderList()"><span
+                aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" ng-bind="modalTitle"></h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center" ng-bind="modalContent"></p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="getOrderList()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

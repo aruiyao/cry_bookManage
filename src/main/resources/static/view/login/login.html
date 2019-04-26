@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+  <link rel="stylesheet" href="/bookManage/css/login.css">
+  <link rel="stylesheet" href="/bookManage/css/bootstrapValidator.css">
+
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/bootstrapValidator.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="login.js"></script>
+  <style>
+    .form-horizontal .control-label{
+      text-align: right
+     } 
+  </style>
+</head>
+
+<body ng-app="loginApp" ng-controller="loginCtrl" ng-init="init()">
+  <div class="login_outer">
+    <h3>登录</h3>
+    <div class="login_box">
+      <form class="form-horizontal login_form" id="login_form">
+        <div class="form-group">
+          <label for="userName" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">账号</label>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入账号" ng-model="userName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">密码</label>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" ng-model="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary btn-letter" id="login-submit" style="margin-left: 190px"
+            ng-click="login()">登录</button>
+          <button type="button" class="btn btn-default btn-letter" style="margin-left: 40px" ng-click="cancle()">取消</button>
+        </div>
+        <div style="line-height: 34px;color: #a94442;margin-left: 170px" ng-bind="error"></div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

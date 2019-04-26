@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/manage/css/bootstrap.css">
+  <link rel="stylesheet" href="/manage/css/reset.css">
+  <link rel="stylesheet" href="/manage/css/login.css">
+  <script src="/manage/3rd/jquery.js"></script>
+  <script src="/manage/3rd/bootstrap.js"></script>
+  <script src="/manage/3rd/angular-1.4.6.js"></script>
+  <script src="orderManage_detail.js"></script>
+</head>
+
+<body ng-app="orderManageDetailApp" ng-controller="orderManageDetailCtrl" ng-init="init()">
+  <div style="padding:  0 50px 100px 50px">
+    <h3>订单详情</h3>
+    <div style="padding: 30px 0">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">订单编号</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" placeholder="" ng-model="order.id" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">创建时间</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.createTime|newdate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">用户编号</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.userId">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">用户名称</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.userName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">商品名称</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.goodsName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">订单价格</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.totalPrice">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">收货地址</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" disabled="true" ng-model="order.address">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">用户留言</label>
+          <div class="col-sm-5">
+            <textarea type="text" class="form-control" disabled="true" ng-model="order.leaveWord"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="goBack()">返回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

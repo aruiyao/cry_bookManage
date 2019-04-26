@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+  <link rel="stylesheet" href="/bookManage/css/login.css">
+  <link rel="stylesheet" href="/bookManage/css/bootstrapValidator.css">
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/bootstrapValidator.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="bookManage_edit.js"></script>
+</head>
+
+<body ng-app="bookManageEditApp" ng-controller="bookManageEditCtrl" ng-init="init()">
+  <div style="padding: 0 50px 100px 50px">
+    <h3>修改书籍</h3>
+    <div style="padding: 30px 0">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for="bookName" class="col-sm-2 control-label">书名</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="bookName" placeholder="" ng-model="book.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="picture" class="col-sm-2 control-label">书籍主图</label>
+          <div class="col-sm-5">
+            <img ng-src="{{downUrl + '?imageName=' + book.picture}}" style="width: 160px; height:160px;border: 1px solid #cccccc"
+              ng-show="book.picture!==''">
+            <form enctype="multipart/form-data" id="uploadForm">
+              <input type="file" name="uploadFile" id="upload_file" style="margin-bottom:10px;">
+              <input type="button" id="uploadPicButton" value="上传" ng-click="uploadImage()">
+            </form>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="author" class="col-sm-2 control-label">作者</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="author" placeholder="" ng-model="book.author">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="press" class="col-sm-2 control-label">出版社</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="press" placeholder="" ng-model="book.press">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="releaseTime" class="col-sm-2 control-label">出版年</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="releaseTime" placeholder="" ng-model="book.releaseTime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="page" class="col-sm-2 control-label">页数</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="page" placeholder="" ng-model="book.page">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="type" class="col-sm-2 control-label">类型</label>
+          <div class="col-sm-5">
+            <select class="form-control" id="type" ng-model="book.type" ng-options="o.id as o.name for o in typeList track by o.id">
+              <option value="" hidden ng-bind="chooseType"></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price" class="col-sm-2 control-label">定价</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="price" placeholder="" ng-model="book.price">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bookBrife" class="col-sm-2 control-label">书籍简介</label>
+          <div class="col-sm-5">
+            <textarea type="text" class="form-control" id="bookBrife" placeholder="" style="height: 150px;" ng-model="book.bookBrife"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="authBrife" class="col-sm-2 control-label">作者简介</label>
+          <div class="col-sm-5">
+            <textarea type="text" class="form-control" id="authBrife" placeholder="" style="height: 150px;" ng-model="book.authBrife"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="updateBook()">保存修改</button>
+            <button class="btn btn-default" ng-click="cancle()" style="margin-left: 50px">返回</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="sure()"><span
+                aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">保存影片</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">保存成功</p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="sure()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

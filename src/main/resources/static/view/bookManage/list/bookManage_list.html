@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+  <link rel="stylesheet" href="/bookManage/css/bootstrapValidator.css">
+
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/bootstrapValidator.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="bookManage_list.js"></script>
+
+  <style>
+    .form-group label{
+      padding-right: 10px
+    }  
+  </style>
+</head>
+
+<body ng-app="bookManageListApp" ng-controller="bookManageListCtrl" ng-init="init()">
+  <div style="padding-bottom: 100px">
+    <div style="padding:30px 0">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="bookId">ISBN</label>
+          <input type="text" id="bookId" class="form-control" placeholder="请输入图书编号" ng-model="id">
+        </div>
+        <div class="form-group" style="margin-left: 35px">
+          <label for="bookName">书名</label>
+          <input type="text" id="bookName" class="form-control" placeholder="请输入书名" ng-model="name">
+        </div>
+        <div class="form-group" style="margin-left: 35px">
+          <label for="">类型</label>
+          <select class="form-control" id="type" ng-model="type" ng-options="o.id as o.name for o in typeList track by o.id">
+            <option value="">全部</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="margin-left: 35px" ng-click="getBookList()">搜索</button>
+      </form>
+    </div>
+    <div> <button class="btn btn-default" ng-click="create()">+&nbsp;&nbsp;&nbsp;添加书籍</button></div>
+    <div style="padding-top: 30px">
+      <table class="table table-hover" id="bookTable">
+        <thead>
+          <th>ISBN</th>
+          <th>书名</th>
+          <th>类型</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in bookList">
+            <td ng-bind="item.id"></td>
+            <td><span ng-bind="item.name"></span></td>
+            <td>
+              <span ng-bind="item.type|matchtype:typeList"></span>
+            </td>
+            <td><span ng-bind="item.createTime|newdate"></span></td>
+            <td>
+              <ul>
+                <li><a href="" ng-click="detail(item.id)">查看</a></li>
+                <li><a href="" ng-click="edit(item.id)">编辑</a></li>
+                <li><a href="" ng-click="delete(item.id)">删除</a></li>
+                <div style="clear: both;"></div>
+              </ul>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="getGoodsList()"><span
+                aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" ng-bind="modalTitle"></h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center" ng-bind="modalContent"></p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="getBookList()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

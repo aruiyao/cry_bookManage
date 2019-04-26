@@ -1,0 +1,16 @@
+.login_outer {
+  width: 600px;
+  margin: 130px auto 0 auto;
+}
+
+.login_box {
+  border: 1px solid #9e9e9e;
+  border-radius: 5px;
+  /* 老的 Firefox */
+  -moz-box-shadow: 10px 10px 5px #888888;
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.login_form {
+  padding: 50px
+}

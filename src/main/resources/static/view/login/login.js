@@ -30,9 +30,12 @@ app.controller("loginCtrl", function ($scope, $rootScope, $timeout) {
       }
     })
   })
-  $scope.init = function () {
-
-  };
+  $scope.enterLogin = function (e) {
+    var keycode = window.event?e.keyCode:e.which;
+    if (keycode == 13) {
+      $scope.login()
+    }
+  }
   $scope.login = function () {
     var bootstrapValidator = $("#login_form").data('bootstrapValidator');
     //手动触发验证

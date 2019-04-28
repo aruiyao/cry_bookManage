@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/bookManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/bookManage/css/reset.css">
+  <link rel="stylesheet" href="/bookManage/css/login.css">
+  <script src="/bookManage/3rd/jquery.js"></script>
+  <script src="/bookManage/3rd/bootstrap.js"></script>
+  <script src="/bookManage/3rd/angular-1.4.6.js"></script>
+  <script src="reviewManage_detail.js"></script>
+  <style>
+    .second-label {
+      text-align: left !important;
+      font-weight: normal;
+      word-break: break-all
+    }
+  </style>
+</head>
+
+<body ng-app="reviewManageDetailApp" ng-controller="reviewManageDetailCtrl" ng-init="init()">
+  <div style="padding: 0 50px 100px 50px">
+    <h3>书籍详情</h3>
+    <div style="padding: 30px 0">
+
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">评论编号</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.id"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">评论者</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.bookName"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">ISBN</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.bookId"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">书名</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.bookName"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">评分</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.score"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">评论内容</label>
+          <label ng-bind="review.review"  class="col-sm-5 control-label second-label"></label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">评论时间</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="review.createTime|newdate"></label>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="goBack()">返回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

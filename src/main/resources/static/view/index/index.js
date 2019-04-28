@@ -13,11 +13,12 @@ app.controller("indexCtrl", function ($scope, $rootScope) {
   $scope.init = function () {
     $scope.userName = "";
     $scope.menulist = [{
-        "name": "图书管理",
-        "url": "../bookManage/list/bookManage_list.html"
-      },
-    
-    ]
+      "name": "图书管理",
+      "url": "../bookManage/list/bookManage_list.html"
+    }, {
+      "name": "评论管理",
+      "url": "../reviewManage/list/reviewManage_list.html"
+    }]
     $scope.chooseMenu(0);
     $.ajax({
       url: "/bookManage/getUserInfo",
